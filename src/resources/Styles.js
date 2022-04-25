@@ -18,11 +18,20 @@ const styles = StyleSheet.create({
     width100: {
         width: '100%'
     },
+    fontBold: {
+        fontWeight: 'bold'
+    },
     justifyCenter: {
         justifyContent: 'center'
     },
     alignItemCenter: {
         alignItems: 'center'
+    },
+    br5: {
+        borderRadius: 5
+    },
+    br10: {
+        borderRadius: 10
     },
     flexColumn: {
         flexDirection: 'column'

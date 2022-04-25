@@ -18,7 +18,10 @@ export default function ProductList({ navigation }) {
     const [loading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getProductList()
+        const unsubscribe = navigation.addListener('focus', () => {
+            getProductList()
+        });
+        return unsubscribe;
     }, [])
 
     const listEmptyComponent = () => {
@@ -48,7 +51,7 @@ export default function ProductList({ navigation }) {
         navigation.navigate('mapView')
 
     }
-    const onPressAddProduct=()=>{
+    const onPressAddProduct = () => {
         navigation.navigate('AddProduct')
     }
     const renderItem = ({ item, index }) => {
@@ -79,7 +82,13 @@ export default function ProductList({ navigation }) {
                 label='Add Product'
                 labelStyle={{ color: 'white' }}
                 contentContainerStyle={{ backgroundColor: 'black', padding: 7, borderRadius: 5 }}
-onPress={onPressAddProduct}
+                onPress={onPressAddProduct}
+            />
+            <CommonButton
+                label='View Total'
+                labelStyle={{ color: 'white' }}
+                contentContainerStyle={{ backgroundColor: 'black', padding: 7, borderRadius: 5, marginHorizontal:5 }}
+                onPress={()=>navigation.navigate('ViewTotalPrice',{products:dataArr})}
             />
         </View>
         <FlatList
